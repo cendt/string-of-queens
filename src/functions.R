@@ -83,69 +83,69 @@ check_if_solution <-
     return(is_solution)
   }
 
-find_diagonals <-
-  function(pos){
-    xc <- get_x_coordinate(pos)
-    yc <- get_y_coordinate(pos)
-    d1 <- c()
-    d2 <- c()
-    d3 <- c()
-    d4 <- c()
-    while (abs(xc) < 4 & abs(yc) < 4) {
-      pos_x <- filter(x_lookup, x == xc)[[1,1]]
-      pos_y <- yc + 4.5
-      d1 <- c(d1,paste0(pos_x,pos_y))
-      xc <- xc + 1
-      yc <- yc - 1
-    }
-    xc <- get_x_coordinate(pos)
-    yc <- get_y_coordinate(pos)
-    while (abs(xc) < 4 & abs(yc) < 4) {
-      pos_x <- filter(x_lookup, x == xc)[[1,1]]
-      pos_y <- yc + 4.5
-      d2 <- c(d2,paste0(pos_x,pos_y))
-      xc <- xc - 1
-      yc <- yc + 1
-    }
-    xc <- get_x_coordinate(pos)
-    yc <- get_y_coordinate(pos)
-    while (abs(xc) < 4 & abs(yc) < 4) {
-      pos_x <- filter(x_lookup, x == xc)[[1,1]]
-      pos_y <- yc + 4.5
-      d3 <- c(d3,paste0(pos_x,pos_y))
-      xc <- xc + 1
-      yc <- yc + 1
-    }
-    xc <- get_x_coordinate(pos)
-    yc <- get_y_coordinate(pos)
-    while (abs(xc) < 4 & abs(yc) < 4) {
-      pos_x <- filter(x_lookup, x == xc)[[1,1]]
-      pos_y <- yc + 4.5
-      d4 <- c(d4,paste0(pos_x,pos_y))
-      xc <- xc - 1
-      yc <- yc - 1
-    }
-    return(unique(c(d1,d2,d3,d4)))
-  }
-
-check_if_solution_alternative_approach <-
-  function(queens){
-    queen_cols <- unique(str_sub(queens,1,1))
-    queen_rows <- unique(str_sub(queens,2,2))
-    tibble(
-      position = all_positions
-    ) %>%
-      filter(
-        !(str_sub(position,1,1) %in% queen_cols),
-        !(str_sub(position,2,2) %in% queen_rows),
-        !(position %in% find_diagonals(queens[1])),
-        !(position %in% find_diagonals(queens[2])),
-        !(position %in% find_diagonals(queens[3])),
-        !(position %in% find_diagonals(queens[4])),
-        !(position %in% find_diagonals(queens[5]))
-      )  %>% 
-      nrow() ->
-      check
-    is_solution <- if_else(check == 0,T,F)
-    return(is_solution)
-  }
+# find_diagonals <-
+#   function(pos){
+#     xc <- get_x_coordinate(pos)
+#     yc <- get_y_coordinate(pos)
+#     d1 <- c()
+#     d2 <- c()
+#     d3 <- c()
+#     d4 <- c()
+#     while (abs(xc) < 4 & abs(yc) < 4) {
+#       pos_x <- filter(x_lookup, x == xc)[[1,1]]
+#       pos_y <- yc + 4.5
+#       d1 <- c(d1,paste0(pos_x,pos_y))
+#       xc <- xc + 1
+#       yc <- yc - 1
+#     }
+#     xc <- get_x_coordinate(pos)
+#     yc <- get_y_coordinate(pos)
+#     while (abs(xc) < 4 & abs(yc) < 4) {
+#       pos_x <- filter(x_lookup, x == xc)[[1,1]]
+#       pos_y <- yc + 4.5
+#       d2 <- c(d2,paste0(pos_x,pos_y))
+#       xc <- xc - 1
+#       yc <- yc + 1
+#     }
+#     xc <- get_x_coordinate(pos)
+#     yc <- get_y_coordinate(pos)
+#     while (abs(xc) < 4 & abs(yc) < 4) {
+#       pos_x <- filter(x_lookup, x == xc)[[1,1]]
+#       pos_y <- yc + 4.5
+#       d3 <- c(d3,paste0(pos_x,pos_y))
+#       xc <- xc + 1
+#       yc <- yc + 1
+#     }
+#     xc <- get_x_coordinate(pos)
+#     yc <- get_y_coordinate(pos)
+#     while (abs(xc) < 4 & abs(yc) < 4) {
+#       pos_x <- filter(x_lookup, x == xc)[[1,1]]
+#       pos_y <- yc + 4.5
+#       d4 <- c(d4,paste0(pos_x,pos_y))
+#       xc <- xc - 1
+#       yc <- yc - 1
+#     }
+#     return(unique(c(d1,d2,d3,d4)))
+#   }
+# 
+# check_if_solution_alternative_approach <-
+#   function(queens){
+#     queen_cols <- unique(str_sub(queens,1,1))
+#     queen_rows <- unique(str_sub(queens,2,2))
+#     tibble(
+#       position = all_positions
+#     ) %>%
+#       filter(
+#         !(str_sub(position,1,1) %in% queen_cols),
+#         !(str_sub(position,2,2) %in% queen_rows),
+#         !(position %in% find_diagonals(queens[1])),
+#         !(position %in% find_diagonals(queens[2])),
+#         !(position %in% find_diagonals(queens[3])),
+#         !(position %in% find_diagonals(queens[4])),
+#         !(position %in% find_diagonals(queens[5]))
+#       )  %>% 
+#       nrow() ->
+#       check
+#     is_solution <- if_else(check == 0,T,F)
+#     return(is_solution)
+#   }

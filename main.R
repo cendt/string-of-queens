@@ -4,7 +4,7 @@ source("src/config.R")
 source("src/functions.R")
 source("src/apply_brute_force.R")
 
-nrow(result)
+nrow(result_df)
 
 end <- Sys.time()
 end - start

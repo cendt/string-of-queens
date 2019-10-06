@@ -1,6 +1,5 @@
-foreach (i=1:100, .combine = c, .multicombine = T) %dopar% {
+foreach (i=1:ncol(all_combinations), .combine = c, .multicombine = T) %dopar% {
   check_if_solution(all_combinations[,i]) -> check
-  if (i %% 100000 == 0){print(paste0("Progress: ",i," out of 7.6 million done"))}
   check
   } ->
   result_list

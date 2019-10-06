@@ -1,0 +1,8 @@
+---
+title: "Notes"
+author: '@cendt'
+date: "6 10 2019"
+output: html_document
+---
+
+Brute Force: Time difference of 10.49349 hours
