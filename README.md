@@ -17,6 +17,8 @@ This repro contains a dataset of all possible solutions to the String of Queens 
 
 *main.R* will guide you through the scripts.
 
+*data/all_solutions.txt* contains just that.
+
 It's 4860 possible solutions, by the way. [Some others](https://www.spiegel.de/karriere/fuenf-damen-raetsel-wie-spiegel-leser-es-geloest-haben-a-1286494.html) who solved the problem before me came up with the same number.
 
 ## How to go on
