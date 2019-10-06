@@ -23,3 +23,7 @@ for(i in c(1:8)){
 }
 
 combn(all_positions,5) -> all_combinations
+
+### this is only for Instagram
+# install.packages("ggdark")
+library(ggdark)

@@ -10,6 +10,16 @@ tibble(id = c(1:length(result_list)), result = result_list) %>%
   filter(result) ->
   result_df
 
+result_df %>% 
+  mutate(
+    queen1 = all_combinations[1,id],
+    queen2 = all_combinations[2,id],
+    queen3 = all_combinations[3,id],
+    queen4 = all_combinations[4,id],
+    queen5 = all_combinations[5,id]
+  ) ->
+  result_df
+
 save(result_df, file = "data/result_df.Rdata")
 
 # start <- Sys.time()
