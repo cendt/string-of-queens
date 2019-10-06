@@ -9,13 +9,15 @@ output: html_document
 
 ## Introduction
 
-A couple of weeks ago, there was a puzzle posted on Spiegel Online: Arrange five queens on a chess board so that every field is threatened by at least one of them.
+A couple of weeks ago, there was a puzzle [posted on Spiegel Online](https://www.spiegel.de/karriere/raetsel-der-woche-fuenf-damen-auf-einem-schachbrett-a-1285289.html): Arrange five queens on a chess board so that every field is threatened by at least one of them.
 
 It's not too hard to find a solution to this puzzle. I was interested in finding _all_ solutions. Doing this turned out to require a lot of computing power. Working parallelized on four chips, it still took more than ten hours on my machine.
 
 This repro contains a dataset of all possible solutions to the String of Queens puzzle, the code to produce it, and some analysis on the data.
 
-It's 4860 possible solutions, by the way.
+*main.R* will guide you through the scripts.
+
+It's 4860 possible solutions, by the way. [Some others](https://www.spiegel.de/karriere/fuenf-damen-raetsel-wie-spiegel-leser-es-geloest-haben-a-1286494.html) who solved the problem before me came up with the same number.
 
 ## How to go on
 

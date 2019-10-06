@@ -6,6 +6,7 @@ result_df %>%
   select(queen_position,n) %>% 
   unique() %>% 
   arrange(desc(queen_position)) %>% 
+  View()
   mutate(
     queen_position_x = str_sub(queen_position,1,1),
     queen_position_y = str_sub(queen_position,2,2)

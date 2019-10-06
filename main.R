@@ -19,5 +19,6 @@ end - start
 
 # now, some analysis on the data
 source("src/plot_heatmap.R")
+source("src/check_on_pairs.R")
 
 # my_solution <- c("B4","C7","D5","E3","F6")
