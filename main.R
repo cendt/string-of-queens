@@ -1,13 +1,19 @@
 start <- Sys.time()
 
+# load packages and create some datasets we will need
 source("src/config.R")
+
+# functions to check if a string of queens is a valid solution
 source("src/functions.R")
+
+# loop through all possible combinations to find valid solutions
+# BE CAREFUL: this takes many hours and uses ALL the cores in your CPU
 source("src/apply_brute_force.R")
 
+# number of valid solutions
 nrow(result_df)
 
 end <- Sys.time()
-
 # total computation time:
 end - start
 

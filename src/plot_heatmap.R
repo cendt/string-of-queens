@@ -15,4 +15,7 @@ result_df %>%
   scale_fill_gradient(
     high = "red",
     low = "yellow") +
+  theme(aspect.ratio = 1) +
   dark_theme_gray()
+
+ggsave("img/heatmap.png", width = 140, height = 120, units = "mm")

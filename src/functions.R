@@ -1,3 +1,5 @@
+# a little helper that will # translate an alphabetic coordinate ABCDEFGH to a cartesian one,
+# using a lookup table I created by hand.
 get_x_coordinate <-
   function(position){
     position_x <- str_sub(position,1,1)
@@ -8,6 +10,7 @@ get_x_coordinate <-
     return(x)
   }
 
+# a little helper for transforming the Y coordinate as well
 get_y_coordinate <-
   function(position)
   {
@@ -17,29 +20,9 @@ get_y_coordinate <-
     return(y)
   }
 
-check_if_threatened <-
-  function(queen,enemy){
-    q_x <- get_x_coordinate(queen)
-    q_y <- get_y_coordinate(queen)
-    e_x <- get_x_coordinate(enemy)
-    e_y <- get_y_coordinate(enemy)
-    if_else(
-      q_x == e_x,
-      T,
-      ifelse(
-        q_y == e_y,
-        T,
-        ifelse(
-          abs((q_y - e_y) / (q_x - e_x)) == 1,
-          T,
-          F
-        )
-      )
-    ) ->
-      threatened
-    return(threatened)
-  }
-
+# check if two positions are on the same diagonal.
+# this is done by calculating the slope of the line that connects them
+# if the slope is -1 or +1, it's a diagonal
 check_if_diagonal <-
   function(queen,enemy){
     q_x <- get_x_coordinate(queen)
@@ -55,6 +38,12 @@ check_if_diagonal <-
     return(diagonal)
   }
 
+# this function takes a string of five queens
+# and checks if it works
+# via checking for all 64 fields wether they are threatened
+# first, everything that shares a row or column with a queen is cleared
+# the rest ist checked for diagonal connections with the function from above
+# the function stops as soon as it finds an unthreatened position
 check_if_solution <-
   function(queens){
     queen_cols <- unique(str_sub(queens,1,1))
@@ -83,6 +72,31 @@ check_if_solution <-
     return(is_solution)
   }
 
+# this function is not in use anymore, because it uses to much computation time
+check_if_threatened <-
+  function(queen,enemy){
+    q_x <- get_x_coordinate(queen)
+    q_y <- get_y_coordinate(queen)
+    e_x <- get_x_coordinate(enemy)
+    e_y <- get_y_coordinate(enemy)
+    if_else(
+      q_x == e_x,
+      T,
+      ifelse(
+        q_y == e_y,
+        T,
+        ifelse(
+          abs((q_y - e_y) / (q_x - e_x)) == 1,
+          T,
+          F
+        )
+      )
+    ) ->
+      threatened
+    return(threatened)
+  }
+
+### this was an alternative approach which turned out to take almost 2x computation time
 # find_diagonals <-
 #   function(pos){
 #     xc <- get_x_coordinate(pos)
