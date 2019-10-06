@@ -42,7 +42,7 @@ check_if_diagonal <-
 # and checks if it works
 # via checking for all 64 fields wether they are threatened
 # first, everything that shares a row or column with a queen is cleared
-# the rest ist checked for diagonal connections with the function from above
+# the rest ist checked for diagonal connections, using the function from above
 # the function stops as soon as it finds an unthreatened position
 check_if_solution <-
   function(queens){
