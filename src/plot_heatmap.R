@@ -11,6 +11,7 @@ result_df %>%
     queen_position_x = str_sub(queen_position,1,1),
     queen_position_y = str_sub(queen_position,2,2)
     ) %>% 
+    View()
   ggplot(aes(x = queen_position_x, y = queen_position_y, fill = n)) +
   geom_raster() +
   scale_fill_gradient(

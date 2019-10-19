@@ -163,3 +163,19 @@ check_if_threatened <-
 #     is_solution <- if_else(check == 0,T,F)
 #     return(is_solution)
 #   }
+
+get_field_color <-
+  function(position){
+    position_x <- str_sub(position,1,1)
+    position_y <- str_sub(position,2,2)
+    position_y <- as.numeric(position_y)
+    field_color <- "bright"
+    if (
+      position_y %% 2 == 1 & position_x %in% c("A","C","E","G")) {
+      field_color <- "dark"
+    }
+    if (position_y %% 2 == 0 & !(position_x %in% c("A","C","E","G"))) {
+      field_color <- "dark"
+    }
+    return(field_color)
+  }
